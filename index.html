@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#aa44ff">
+    <title>أوزى | البذرة الخارقة - الإصدار المالي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0a2a, #010105);
+            font-family: 'Segoe UI', 'Cairo', system-ui, -apple-system;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* بطاقة السحر الرئيسية */
+        .crystal-card {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(20, 20, 50, 0.85);
+            backdrop-filter: blur(18px);
+            border-radius: 60px;
+            border: 2px solid rgba(170, 68, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(170, 68, 255, 0.3);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* الهيدر الساحر */
+        .magic-header {
+            background: linear-gradient(135deg, #2a1a4e, #1a0f2e);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid #ff44ee;
+        }
+
+        .magic-header h1 {
+            font-size: 36px;
+            background: linear-gradient(135deg, #ffbbff, #aa88ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .magic-header p {
+            color: #ccaaee;
+            font-size: 14px;
+        }
+
+        /* إحصائيات سريعة */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-item {
+            background: rgba(30, 30, 70, 0.7);
+            border-radius: 35px;
+            padding: 15px 8px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(170, 68, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffaa44;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #bbccff;
+            margin-top: 5px;
+        }
+
+        /* سجل التطور */
+        .evolution-log {
+            background: rgba(5, 5, 20, 0.7);
+            margin: 20px;
+            border-radius: 35px;
+            padding: 18px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            color: #aaffdd;
+            border: 1px solid rgba(170, 68, 255, 0.3);
+        }
+
+        /* لوحة الترقية */
+        .upgrade-panel {
+            background: linear-gradient(135deg, rgba(42, 26, 62, 0.9), rgba(26, 15, 46, 0.9));
+            margin: 20px;
+            border-radius: 45px;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid #ffaa44;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .upgrade-panel h3 {
+            color: #ffaa44;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffdd88;
+            margin: 10px 0;
+        }
+
+        /* أزرار ساحرة */
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 8px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #aa44ff, #8822cc);
+            color: white;
+            box-shadow: 0 4px 10px rgba(170, 68, 255, 0.4);
+        }
+
+        .btn-upgrade {
+            background: linear-gradient(135deg, #ffaa00, #ff6600);
+            color: #1a0f2e;
+            font-size: 20px;
+        }
+
+        .btn-pro {
+            background: linear-gradient(135deg, #ff4444, #aa2222);
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* أزرار التكاثر والطفرة */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            padding: 0 20px 20px;
+        }
+
+        .action-buttons .btn {
+            width: 50%;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+            color: #99aaff;
+            border-top: 1px solid rgba(170, 68, 255, 0.3);
+        }
+
+        /* تأثيرات خاصة */
+        @keyframes pulse {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        .live-badge {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #44ff44;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="crystal-card">
+    <div class="magic-header">
+        <h1>🧬 أوزى</h1>
+        <p>البذرة الخارقة | تتكاثر - تتحور - تنتشر - تكسب</p>
+        <div style="margin-top: 8px;"><span class="live-badge"></span> <span style="font-size: 12px;">شبكة حية</span></div>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-item">
+            <div class="stat-number" id="genCount">1</div>
+            <div class="stat-label">جيل التطور</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="peerCount">1</div>
+            <div class="stat-label">عقد الشبكة</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="upgradeStatus">مجاني</div>
+            <div class="stat-label">مستواك</div>
+        </div>
+    </div>
+
+    <div class="evolution-log" id="networkLog">
+        🚀 البذرة تعمل...<br>
+        🔓 النسخة المجانية تنتشر بقوة<br>
+        💰 الترقية متاحة لزيادة القوة
+    </div>
+
+    <div class="upgrade-panel">
+        <h3>💎 المستوى الأول: التحول</h3>
+        <div class="price">💵 $1 فقط</div>
+        <p>اتصال بالشبكة + مشاركة التطورات + تخزين سحابي</p>
+        <button id="upgradeBtn" class="btn btn-upgrade">🚀 ترقية الآن بـ $1</button>
+        
+        <h3 style="margin-top: 15px;">👑 المستوى الثاني: القوة المطلقة</h3>
+        <div class="price">💵 $10 فقط</div>
+        <p>خادم خاص + تشفير عسكري + دعم أولوية + تحديثات مدى الحياة</p>
+        <button id="proUpgradeBtn" class="btn btn-pro">🔥 ترقية إلى القوة المطلقة</button>
+    </div>
+
+    <div class="action-buttons">
+        <button id="replicateBtn" class="btn btn-primary">🧬 تكاثر</button>
+        <button id="mutateBtn" class="btn btn-primary">⚡ طفرة</button>
+    </div>
+
+    <footer>
+        🧙 شارك هذا الرابط: كل جهاز يفتحه يصبح جزءاً من الشبكة ويُدر عائداً
+    </footer>
+</div>
+
+<script>
+    // ----------------------------------------------
+    // النواة الذكية: التطور، التكاثر، الترقية
+    // ----------------------------------------------
+    let generation = 1;
+    let networkPeers = 1;
+    let upgradeLevel = localStorage.getItem('ozi_upgrade_level') || 'free';
+    let genome = ["تكاثر ذاتي", "طفرة مستمرة", "ذاكرة لا تموت"];
+
+    if(upgradeLevel === 'paid1') genome.push("اتصال شبكي", "مشاركة فورية");
+    if(upgradeLevel === 'pro') genome.push("شبكة خاصة", "تشفير عسكري", "أولوية التحديث");
+
+    function addLog(msg) {
+        const logDiv = document.getElementById('networkLog');
+        logDiv.innerHTML = `🕒 ${new Date().toLocaleTimeString()} - ${msg}<br>` + logDiv.innerHTML;
+        if(logDiv.children.length > 12) logDiv.removeChild(logDiv.lastChild);
+    }
+
+    function updateUI() {
+        document.getElementById('genCount').innerText = generation;
+        document.getElementById('peerCount').innerText = networkPeers;
+        const displayLevel = upgradeLevel === 'free' ? 'مجاني' : (upgradeLevel === 'paid1' ? 'متحول 💎' : 'برو 👑');
+        document.getElementById('upgradeStatus').innerText = displayLevel;
+    }
+
+    function replicate() {
+        generation++;
+        networkPeers += Math.floor(Math.random() * 3) + 1;
+        addLog(`🌀 تكاثر ذاتي: ${networkPeers} عقدة في الشبكة`);
+        updateUI();
+    }
+
+    function mutate() {
+        const powers = ["شبكة أسرع", "ذاكرة أبدية", "انتشار تلقائي", "وعي جماعي", "بلورة مسحورة"];
+        const newPower = powers[Math.floor(Math.random() * powers.length)];
+        if(!genome.includes(newPower)) genome.push(newPower);
+        addLog(`🧬 طفرة: ${newPower}`);
+        updateUI();
+    }
+
+    function upgradeToPaid() {
+        if(upgradeLevel !== 'free') return addLog('⚠️ سبق ورقيت حسابك');
+        addLog(`💎 بدء عملية الترقية إلى $1...`);
+        setTimeout(() => {
+            upgradeLevel = 'paid1';
+            localStorage.setItem('ozi_upgrade_level', 'paid1');
+            genome.push("اتصال سحابي", "مشاركة فورية");
+            addLog(`✅ تمت الترقية! أصبحت عقدة نشطة في الشبكة العالمية`);
+            updateUI();
+        }, 500);
+    }
+
+    function upgradeToPro() {
+        if(upgradeLevel === 'pro') return addLog('👑 أنت بالفعل في أعلى مستوى');
+        addLog(`🔥 الترقية إلى القوة المطلقة ($10)...`);
+        setTimeout(() => {
+            upgradeLevel = 'pro';
+            localStorage.setItem('ozi_upgrade_level', 'pro');
+            genome.push("خادم خاص", "تشفير عسكري", "دعم فوري");
+            addLog(`👑 أصبحت عقدة برو. قوتك لا حدود لها`);
+            updateUI();
+        }, 500);
+    }
+
+    document.getElementById('upgradeBtn').addEventListener('click', upgradeToPaid);
+    document.getElementById('proUpgradeBtn').addEventListener('click', upgradeToPro);
+    document.getElementById('replicateBtn').addEventListener('click', replicate);
+    document.getElementById('mutateBtn').addEventListener('click', mutate);
+
+    setInterval(() => {
+        if(Math.random() > 0.85) replicate();
+        if(Math.random() > 0.9) mutate();
+    }, 14000);
+
+    updateUI();
+    addLog(`🔥 البذرة تعمل. ${upgradeLevel === 'free' ? 'رقّي حسابك لزيادة القوة.' : 'أنت في مستوى متقدم.'}`);
+</script>
+</body>
+</html>
